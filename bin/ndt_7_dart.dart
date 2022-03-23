@@ -1,5 +1,6 @@
 import 'package:ndt_7_dart/src/download.dart';
 import 'package:ndt_7_dart/src/locator.dart';
+import 'package:ndt_7_dart/src/upload.dart';
 
 Future<void> main(List<String> arguments) async {
   print('Test program for NDT-7 Dart implementation!');
@@ -14,4 +15,13 @@ Future<void> main(List<String> arguments) async {
   });
 
   await dc.startTest();
+
+  print("Moving on to upload test");
+
+  var upload = UploadTest(targets[0].URLs['ws:///ndt/v7/upload'] ?? "");
+  upload.outputStream.forEach((element) {
+    print("upload-${element.bps * 8 / 1000 / 1000}mbps-${element.done}");
+  });
+  await upload.startTest();
+  print("Done testing!");
 }
