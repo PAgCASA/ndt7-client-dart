@@ -14,8 +14,10 @@ Future<void> main(List<String> arguments) async {
     print("download-${element.bps * 8 / 1000 / 1000}mbps-${element.done}");
   });
 
+  print("Starting download test");
   await dc.startTest();
 
+  await Future.delayed(Duration(milliseconds: 500));
   print("Moving on to upload test");
 
   var upload = UploadTest(targets[0].URLs['ws:///ndt/v7/upload'] ?? "");

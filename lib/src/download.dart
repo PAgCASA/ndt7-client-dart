@@ -42,11 +42,11 @@ class DownloadTest {
     }, onDone: () {
       outputTimer.cancel();
       _outputStream.add(TestStatus.fromRaw(_totalBytes, _start, done: true));
-      return;
+      channel.sink.close();
     }, onError: (e) {
       outputTimer.cancel();
       _outputStream.addError(e);
-      return;
+      channel.sink.close();
     });
 
     return Future(() async {
