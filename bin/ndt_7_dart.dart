@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:ndt_7_dart/src/download.dart';
 import 'package:ndt_7_dart/src/locator.dart';
 import 'package:ndt_7_dart/src/upload.dart';
@@ -26,4 +28,5 @@ Future<void> main(List<String> arguments) async {
   });
   await upload.startTest();
   print("Done testing!");
+  exit(0);
 }

@@ -1,7 +1,6 @@
 name: ndt_7_dart
 description: NDT-7 implemented in Dart.
 version: 1.0.0
-# homepage: https://www.example.com
 
 environment:
   sdk: '>=2.16.0 <3.0.0'
