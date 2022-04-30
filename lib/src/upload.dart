@@ -51,10 +51,10 @@ class UploadTest {
     });
 
     return Future(() async {
+      List<Uint8List> collectionOfData = List.generate(5, (index) => data);
       while (!_done) {
-        await Future.delayed(Duration(microseconds: 1));
-        sink.add(data);//TODO this doesn't block if buffer is full so we can't get an accurate measurement
-        _totalBytes += data.length;
+        await sink.addStream(Stream.fromIterable(collectionOfData));
+        _totalBytes += data.length * 5;
       }
       outputTimer.cancel();
       return TestStatus.fromRaw(_totalBytes, _start, done: true);
